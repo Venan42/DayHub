@@ -1,0 +1,19 @@
+[project]
+name = "dayhub"
+version = "0.1.0"
+description = "Backend API for DayHub Personal Management System"
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "litestar==2.24.0",
+    "beanie==2.2.0",
+    "motor==3.7.1",
+    "pydantic-settings==2.15.0",
+    "python-jose[cryptography]==3.5.0",
+    "passlib[bcrypt]==1.7.4",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
