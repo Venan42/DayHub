@@ -1,0 +1,8 @@
+services:
+  mongo-test:
+    image: mongo:7
+    container_name: dayhub-mongo-test
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=dayhub_test
