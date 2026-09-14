@@ -1,0 +1,11 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: mongo-hub
+    ports:
+      - "27017:27017"
+    volumes:
+      - dayhub_mongo_data:/data/db
+
+volumes:
+  dayhub_mongo_data:
