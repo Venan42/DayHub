@@ -1,3 +1,4 @@
+import '../../../../core/errors/failure.dart';
 import '../../domain/entities/user_entity.dart';
 
 enum AuthStatus { initial, loading, authenticated, unauthenticated, error }
@@ -5,23 +6,21 @@ enum AuthStatus { initial, loading, authenticated, unauthenticated, error }
 class AuthState {
   final AuthStatus status;
   final UserEntity? user;
-  final String? errorMessage;
+  final Failure? failure;
 
-  const AuthState({
-    this.status = AuthStatus.initial,
-    this.user,
-    this.errorMessage,
-  });
+  const AuthState({this.status = AuthStatus.initial, this.user, this.failure});
 
-  AuthState copyWith({
-    AuthStatus? status,
-    UserEntity? user,
-    String? errorMessage,
-  }) {
+  Map<String, String> get fieldErrors {
+    final f = failure;
+    if (f is ValidationFailure) return f.fieldErrors;
+    return const {};
+  }
+
+  AuthState copyWith({AuthStatus? status, UserEntity? user, Failure? failure}) {
     return AuthState(
       status: status ?? this.status,
       user: user ?? this.user,
-      errorMessage: errorMessage,
+      failure: failure,
     );
   }
 }
