@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 
 dependencies = [
-    "litestar==2.24.0",
+    "litestar[standard]==2.24.0",
     "beanie==1.29.0",
     "motor==3.7.0",
     "pydantic-settings==2.15.0",
@@ -15,7 +15,7 @@ dependencies = [
     "bcrypt==4.0.1",
     "email-validator==2.3.0",
     "pytest==9.1.1",
-    "pytest-asyncio==1.4.0"
+    "pytest-asyncio==1.4.0",
 ]
 
 [build-system]

@@ -17,7 +17,7 @@ from app.modules.auth.services import AuthService
 
 class AuthController(Controller):
     path = "/auth"
-    dependencies = {"current_user": Provide(provide_current_user, sync_to_thread=False)}
+    dependencies = {"current_user": Provide(provide_current_user)}
 
     @post(path="/register", status_code=HTTP_201_CREATED)
     async def register(self, data: UserRegisterDTO) -> TokenDTO:
