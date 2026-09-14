@@ -9,8 +9,6 @@ import '../../features/auth/presentation/screens/profile_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
-  final authNotifier = ref.watch(authProvider.notifier);
-
   return GoRouter(
     initialLocation: '/login',
     refreshListenable: ValueNotifier(ref.watch(authProvider)),
