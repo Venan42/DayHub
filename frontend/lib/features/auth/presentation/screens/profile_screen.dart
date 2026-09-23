@@ -18,9 +18,7 @@ class ProfileScreen extends ConsumerWidget {
         title: const Text('PERFIL'),
         actions: [
           IconButton(
-            icon: Icon(
-              themeMode == ThemeMode.dark ? Icons.dark_mode : Icons.light_mode,
-            ),
+            icon: Icon(themeMode == ThemeMode.dark ? Icons.dark_mode : Icons.light_mode),
             onPressed: () => ref.read(themeModeProvider.notifier).toggle(),
           ),
           IconButton(
@@ -31,24 +29,33 @@ class ProfileScreen extends ConsumerWidget {
       ),
       body: user == null
           ? const Center(child: CircularProgressIndicator())
-          : Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('ID', style: Theme.of(context).textTheme.labelMedium),
-                  Text(user.id),
-                  const SizedBox(height: 16),
-                  Text('NOME', style: Theme.of(context).textTheme.labelMedium),
-                  Text(user.name),
-                  const SizedBox(height: 16),
-                  Text(
-                    'E-MAIL',
-                    style: Theme.of(context).textTheme.labelMedium,
+          : ListView(
+              padding: const EdgeInsets.all(16),
+              children: [
+                Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(user.name, style: Theme.of(context).textTheme.titleLarge),
+                        const SizedBox(height: 4),
+                        Text(user.email),
+                      ],
+                    ),
                   ),
-                  Text(user.email),
-                ],
-              ),
+                ),
+                const SizedBox(height: 24),
+                Text('RESUMOS', style: Theme.of(context).textTheme.labelMedium),
+                const SizedBox(height: 8),
+                const Card(
+                  child: ListTile(
+                    leading: Icon(Icons.account_balance_wallet_outlined),
+                    title: Text('Resumo financeiro'),
+                    subtitle: Text('Em construção.'),
+                  ),
+                ),
+              ],
             ),
     );
   }
